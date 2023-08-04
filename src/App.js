@@ -5,11 +5,11 @@ import Navbar from './components/Navbar';
 import TextForms from './components/TextForm';
 import React,{useState} from 'react';
 import Alert from './components/Alert';
-// import{
-//     BrowserRouter as Router,
-//     Switch,
-//     Route
-// } from "react-router-dom";
+import{
+    BrowserRouter as Router,
+    Switch,
+    Route
+} from "react-router-dom";
 
 
 function App() {
@@ -43,25 +43,24 @@ function App() {
   }
   return (
     <>
-      {/* <Router> */}
-      <Navbar title="TextManipulator" mode={mode} toggleMode={toggleMode} />
-      <Alert alert={alert} />
-      <div className="container my-3">
-        {/* <Switch> */}
-        {/* <Route exact path="/"> */}
+      <Router>
+        <Navbar title="TextManipulator" mode={mode} toggleMode={toggleMode} />
+        <Alert alert={alert} />
 
-        {/* </Route> */}
-        {/* <Route exact path="/"> */}
-        <TextForms
-          showAlert={showAlert}
-          heading="TextManipulator-Word Counter, Character Counter "
-          mode={mode}
-        />
-        <About mode={mode} />
-        {/* </Route>
-          </Switch> */}
-      </div>
-      {/* </Router> */}
+        <Switch>
+          <Route exact path="/about">
+            <About mode={mode} />
+          </Route>
+          <Route exact path="/">
+            <TextForms
+              showAlert={showAlert}
+              heading="TextManipulator-Word Counter, Character Counter "
+              mode={mode}
+            />
+          </Route>
+        </Switch>
+        {/* <div className="container my-3"></div> */}
+      </Router>
     </>
   );
 }
